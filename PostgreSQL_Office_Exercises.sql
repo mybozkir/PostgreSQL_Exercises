@@ -11,3 +11,18 @@ SELECT first_name, last_name, salary, job_id
 FROM employees
 WHERE (salary NOT BETWEEN 4000 AND 7000)
 	AND (NOT job_id = 16)
+
+-- Exercise 3
+-- Combine the first_name, last_name and email fields in the office table with a space between them.
+-- And, do this operation in 3 different ways.
+SELECT first_name, last_name, email,
+	CONCAT(first_name, ' ', last_name, ' ', email)
+FROM employees;
+
+SELECT first_name, last_name, email,
+	CONCAT_WS(' ', first_name, last_name, email)
+FROM employees;
+
+SELECT first_name, last_name, email,
+	first_name || ' ' || last_name || ' ' || email
+FROM employees;

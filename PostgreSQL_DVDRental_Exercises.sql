@@ -22,3 +22,60 @@ WHERE (length < 100) OR (length > 120);
 SELECT first_name, last_name
 FROM customer
 WHERE first_name LIKE '_her%'
+
+-- Exercise 5
+-- Write a query that returns moviesw with the words "drama" and "Australia" in the 'description' field of the movie table
+-- in the format below. Search should not be case sensitive.
+SELECT
+	UPPER(title) AS title_new,
+	LOWER(description) AS description_new
+FROM film
+WHERE LOWER(description) LIKE '%drama%australia%';
+
+-- Exercise 6
+-- Find movies with the word "Hunter" in description field in 3 different ways. Search should be case sensitive.
+SELECT title, description
+FROM film
+WHERE description LIKE '%Hunter%'
+
+SELECT title, description
+FROM film
+WHERE INITCAP(description) LIKE '%Hunter%'
+
+SELECT title, description
+FROM film
+WHERE POSITION('Hunter' IN description) > 0
+
+-- Exercise 7
+-- Using today's date, create an output like the one below. Do it in 2 different ways.
+SELECT CURRENT_DATE,
+       EXTRACT(CENTURY FROM CURRENT_DATE) AS century_,
+	   EXTRACT(QUARTER FROM CURRENT_DATE) AS quarter_,
+	   EXTRACT(DECADE FROM CURRENT_DATE) AS decade_;
+
+
+SELECT 'Quarter is: ' || DATE_PART('quarter', CURRENT_DATE)::varchar ||
+       ', Year is: ' || DATE_PART('year', CURRENT_DATE)::varchar ||
+	   ', Month is: ' || DATE_PART('month', CURRENT_DATE)::varchar ||
+	   ', Doy is: ' || DATE_PART('doy', CURRENT_DATE)::varchar;
+
+SELECT 'Quarter is: ' || EXTRACT(QUARTER FROM CURRENT_DATE)::varchar ||
+       ', Year is: ' ||  EXTRACT(YEAR FROM CURRENT_DATE)::varchar ||
+	   ', Month is: ' ||  EXTRACT(MONTH FROM CURRENT_DATE)::varchar ||
+	   ', Doy is: ' ||  EXTRACT(DOY FROM CURRENT_DATE)::varchar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

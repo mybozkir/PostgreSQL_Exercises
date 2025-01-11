@@ -64,6 +64,12 @@ SELECT 'Quarter is: ' || EXTRACT(QUARTER FROM CURRENT_DATE)::varchar ||
 	   ', Month is: ' ||  EXTRACT(MONTH FROM CURRENT_DATE)::varchar ||
 	   ', Doy is: ' ||  EXTRACT(DOY FROM CURRENT_DATE)::varchar;
 
+-- Exercise 8
+-- Write a query that returns only 5 rows, using the field shown below in the payment table.
+
+SELECT customer_id, amount, payment_date,
+	   customer_id || ' paid: $ ' || amount || ' at ' || TO_CHAR(payment_date, 'HH24:MI:SS') || ' on ' || TO_CHAR(payment_date, 'Mon-DD-YYYY')
+FROM payment;
 
 
 
